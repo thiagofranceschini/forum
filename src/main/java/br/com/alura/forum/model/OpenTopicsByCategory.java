@@ -1,6 +1,7 @@
 package br.com.alura.forum.model;
 
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -23,8 +24,12 @@ public class OpenTopicsByCategory {
 	public OpenTopicsByCategory() {
 	}
 
-	public OpenTopicsByCategory(String categoryname, Number topicCount, Date instant) {
-
+	public OpenTopicsByCategory(String categoryName, Number topicCount, Date instant) {
+		this.categoryName = categoryName;
+		this.topicCount = topicCount.intValue();
+		this.date = instant.toInstant()
+				.atZone(ZoneId.systemDefault())
+				.toLocalDate();
 	}
 
 	public Long getId() {

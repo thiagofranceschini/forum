@@ -24,7 +24,7 @@ public class RegisterUnAnsweredTopicTask {
 	@Scheduled(fixedDelay=6000)
 	public void execute(){
 		List<OpenTopicsByCategory>topics = repository.findOpenTopicsByCategory();
-		this.openTopicsRepository.saveAll(topics);
+		openTopicsRepository.saveAll(topics);
 		logger.info("***** RODANDO A TAREFA AGENDADA *****");
 	}
 	
